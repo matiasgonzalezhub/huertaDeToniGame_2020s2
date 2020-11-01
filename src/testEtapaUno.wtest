@@ -1,0 +1,29 @@
+import toni.*
+import plantas.*
+
+test "test1" {
+
+	assert.equals([],toni.sembrarPlanta("Maiz"))
+	
+}
+
+test "test2" {
+
+toni.sembrarPlanta("Maiz")
+toni.regarLasPlantas()
+
+	assert.equals(false, toni.convieneRegar())
+
+}
+
+test "tes3" {
+
+	assert.that(true)
+
+}
+
+test "test4" {
+
+	assert.that(true)
+
+}

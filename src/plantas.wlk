@@ -1,6 +1,9 @@
+import wollok.game.*
+
 class Planta {
 	
-	var aptaCosecha = false
+	var property aptaCosecha = false
+	var property position 
 	
 	method image() {
 		return "maiz_bebe.png"
@@ -15,6 +18,8 @@ class Planta {
 	
 	method precioDeVenta(){ return 0}
 	
+    //method getPosition(){return position}
+	//method setPosition(x,y){position = new Position()}
 }
 
 
@@ -46,6 +51,7 @@ class Maiz inherits Planta {
 	{
 		return true
 	}
+	
 }
 
 
@@ -95,15 +101,21 @@ class Trigo inherits Planta {
 	method libreDeGluten()
 	{
 		return false
-	}
+	}	
 	
 }
 
 class Tomaco inherits Planta {
+		
+	override method aptaCosecha()
+	{
+		aptaCosecha = true
+		return aptaCosecha
+	}
 	
 	override method image() 
 	{	
-		aptaCosecha = true	
+		
 		return "tomaco_ok.png"		
 	}
 	
@@ -117,4 +129,7 @@ class Tomaco inherits Planta {
 	{
 		return true
 	}
+
 }
+	
+	
