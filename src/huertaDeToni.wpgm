@@ -39,24 +39,33 @@ program huertaDeToni {
 	keyboard.m().onPressDo
 	{
 		var p = toni.sembrarPlanta("Maiz")
-	//game.addVisual(p) 	
+		
 	}
 	
 	keyboard.t().onPressDo
 	{
 		var p = toni.sembrarPlanta("Trigo")
-	//game.addVisual(p) 
+	
 	}
 	
 	keyboard.o().onPressDo{
 		var p = toni.sembrarPlanta("Tomaco")
-	//game.addVisual(p) 
+	
 	}
 	
 	keyboard.a().onPressDo{
 		toni.regarLasPlantas()
-	//game.addVisual(p) 
+	
 	}
+	
+	keyboard.r().onPressDo{
+		
+		var planta = game.colliders(toni).first()
+		//var hayPlanta = planta.first()
+		toni.regarUnaPlanta(planta)
+	
+	}
+	
 	
 	keyboard.x().onPressDo{
 		toni.cosecharTodo()
@@ -70,9 +79,9 @@ program huertaDeToni {
 	
 	keyboard.backspace().onPressDo{
 		
-		var mensaje =" Tengo "+ toni.cuantoOroTengo() +" monedas y me quedan "+ toni.cantidadPlantasPorVender() +" plantas para vender"
+		var mensaje =" Tengo "+ toni.cuantoOroTengo().toString() +" monedas y me quedan "+ toni.cantidadPlantasPorVender().toString() +" plantas para vender"
 		
-		game.say(toni,mensaje)
+		game.say(toni,"hola")
 	 
 	}
 	

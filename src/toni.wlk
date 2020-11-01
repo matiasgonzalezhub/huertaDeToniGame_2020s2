@@ -38,6 +38,11 @@ object toni {
 		plantasSembradas.forEach({ p => p.regar()})		
 	}
 	
+	method regarUnaPlanta(planta)
+	{
+		planta.regar()
+	}
+	
 	method sembrarPlanta(tipoPlanta)
 	{
 		var planta
