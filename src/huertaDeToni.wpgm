@@ -84,11 +84,11 @@ program huertaDeToni {
 	
 	}
 	
-	keyboard.backspace().onPressDo{
+	keyboard.space().onPressDo{
 		
 		var mensaje =" Tengo "+ toni.cuantoOroTengo().toString() +" monedas y me quedan "+ toni.cantidadPlantasPorVender().toString() +" plantas para vender"
 		
-		game.say(toni,"hola")
+		game.say(toni,mensaje)
 	 
 	}
 	
