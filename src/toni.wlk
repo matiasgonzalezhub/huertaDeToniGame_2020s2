@@ -45,18 +45,20 @@ object toni {
 		
 		if(tipoPlanta == "Maiz")
 		{
-			planta = new Maiz(position = position= game.at(1,1) )
+			planta = new Maiz(position = position )
 		}
 		else if (tipoPlanta == "Trigo")
 		{
-			planta = new Trigo(position = position=game.at(3,3) )
+			planta = new Trigo(position = position )
 		}
 		else if(tipoPlanta == "Tomaco")
 		{
-			planta = new Tomaco(position = position=game.at(5,5) )
+			planta = new Tomaco(position = position )
 		}
 		
 		self.agregarAPlantaSembradas(planta)
+		
+		position.clone().drawElement(planta)
 		
 		return planta
 	}
@@ -71,7 +73,7 @@ object toni {
 		var plantasAcosechar = self.plantasListasParaCosechar()
 		
 		plantasAcosechar.forEach({ p =>  self.cosecharPlanta(p)})
-		
+	
 	}
 	
 	method cosecharPlanta(planta)
@@ -109,6 +111,16 @@ object toni {
 	method convieneRegar()
 	{
 		return plantasSembradas.any({ p => !p.aptaCosecha() })
+	}
+	
+	method cuantoOroTengo()
+	{
+		return cantidadDeOroAcumulado
+	}
+	
+	method cantidadPlantasPorVender()
+	{
+		return plantasCosechadas.size()
 	}
 	
 	method moverDerecha() { self.cambiarPosicion(self.position().right(1)) }

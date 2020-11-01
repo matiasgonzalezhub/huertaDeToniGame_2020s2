@@ -82,11 +82,11 @@ class Trigo inherits Planta {
 			imagen = "trigo_3.png"
 			aptaCosecha = true
 		}
-		else
-		{
-			etapaEvolucion = 0
-			imagen = "trigo_0.png"
-		}
+	//	else
+	//	{
+	//		etapaEvolucion = 0
+	//		imagen = "trigo_0.png"
+	//	}
 	}
 	
 	override method precioDeVenta()
