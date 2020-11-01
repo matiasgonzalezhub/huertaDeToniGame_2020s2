@@ -97,9 +97,15 @@ program huertaDeToni {
 		
 		if(hayEnPosicion)
 			throw new Exception(message = "No hay planta en esta posicion para cosechar")
+		
+		
 			
 		var planta = game.colliders(toni).first()
-		toni.cosecharPlanta(planta)
+		
+		if(!planta.aptaCosecha())
+			throw new Exception(message = "La planta no esta apta para cosechar")
+		else
+			toni.cosecharPlanta(planta)
 	}
 	
 	
