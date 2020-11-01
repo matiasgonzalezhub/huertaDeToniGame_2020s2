@@ -61,7 +61,7 @@ program huertaDeToni {
 	keyboard.r().onPressDo{
 		
 		var planta = game.colliders(toni).first()
-		//var hayPlanta = planta.first()
+		
 		toni.regarUnaPlanta(planta)
 	
 	}
@@ -69,12 +69,19 @@ program huertaDeToni {
 	
 	keyboard.x().onPressDo{
 		toni.cosecharTodo()
-	//game.addVisual(p) 
+	
 	}
+	
+	keyboard.c().onPressDo
+	{
+		var planta = game.colliders(toni).first()
+		toni.cosecharPlanta(planta)
+	}
+	
 	
 	keyboard.v().onPressDo{
 		toni.venderCosecha()
-	//game.addVisual(p) 
+	
 	}
 	
 	keyboard.backspace().onPressDo{

@@ -78,14 +78,17 @@ object toni {
 		var plantasAcosechar = self.plantasListasParaCosechar()
 		
 		plantasAcosechar.forEach({ p =>  self.cosecharPlanta(p)})
+		
+		//prueba eliminar
+	//	plantasSembradas.clear()
 	
 	}
 	
 	method cosecharPlanta(planta)
 	{
-		self.eliminarDePlantasSembradas(planta)
 		self.agregarPlantaCosechada(planta)
-		
+		self.eliminarDePlantasSembradas(planta)	
+		game.removeVisual(planta)
 	}
 	
 	method venderCosecha()
