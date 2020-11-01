@@ -77,10 +77,7 @@ object toni {
 	{
 		var plantasAcosechar = self.plantasListasParaCosechar()
 		
-		plantasAcosechar.forEach({ p =>  self.cosecharPlanta(p)})
-		
-		//prueba eliminar
-	//	plantasSembradas.clear()
+		plantasAcosechar.forEach({ p =>  self.cosecharPlanta(p)})	
 	
 	}
 	
@@ -92,8 +89,7 @@ object toni {
 	}
 	
 	method venderCosecha()
-	{
-		//cantidadDeOroAcumulado += plantasCosechadas.sum({ p => p.precioDeVenta() })
+	{		
 		self.agregarOroPorVenta(plantasCosechadas.sum({ p => p.precioDeVenta() })) 
 		plantasCosechadas.clear()
 	}
@@ -109,8 +105,7 @@ object toni {
 	}
 	
 	method cuantoHayParaCeliacos()
-	{
-		//obtener las q estan listas para cosechar
+	{		
 		var listasParaCosechar = self.plantasListasParaCosechar()
 		
 		return listasParaCosechar.count({ p => p.libreDeGluten()})

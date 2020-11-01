@@ -38,19 +38,33 @@ program huertaDeToni {
 	
 	keyboard.m().onPressDo
 	{
-		var p = toni.sembrarPlanta("Maiz")
+		var planta = game.colliders(toni).isEmpty()
+		
+		if(!planta)
+			throw new Exception(message = "hay planta en esta posicion")
+		else
+			toni.sembrarPlanta("Maiz") 
 		
 	}
 	
 	keyboard.t().onPressDo
 	{
-		var p = toni.sembrarPlanta("Trigo")
-	
+		var planta = game.colliders(toni).isEmpty()
+		
+		if(!planta)
+			throw new Exception(message = "hay planta en esta posicion")
+		else
+			toni.sembrarPlanta("Trigo")	
 	}
 	
-	keyboard.o().onPressDo{
-		var p = toni.sembrarPlanta("Tomaco")
-	
+	keyboard.o().onPressDo
+	{
+		var planta = game.colliders(toni).isEmpty()
+		
+		if(!planta)
+			throw new Exception(message = "hay planta en esta posicion")
+		else	
+			toni.sembrarPlanta("Tomaco")	
 	}
 	
 	keyboard.a().onPressDo{
@@ -58,8 +72,13 @@ program huertaDeToni {
 	
 	}
 	
-	keyboard.r().onPressDo{
+	keyboard.r().onPressDo
+	{
+		var hayplanta = game.colliders(toni).isEmpty()
 		
+		if(hayplanta)
+			throw new Exception(message = "hay planta en esta posicion para regar")
+				
 		var planta = game.colliders(toni).first()
 		
 		toni.regarUnaPlanta(planta)
@@ -74,6 +93,11 @@ program huertaDeToni {
 	
 	keyboard.c().onPressDo
 	{
+		var hayEnPosicion = game.colliders(toni).isEmpty()
+		
+		if(hayEnPosicion)
+			throw new Exception(message = "No hay planta en esta posicion para cosechar")
+			
 		var planta = game.colliders(toni).first()
 		toni.cosecharPlanta(planta)
 	}
