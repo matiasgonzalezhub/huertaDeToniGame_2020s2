@@ -1,5 +1,6 @@
 import wollok.game.*
 import plantas.*
+import pachamama.*
 
 object toni {
 	const property image = "toni.png"
@@ -9,6 +10,8 @@ object toni {
 	var cantidadDeOroAcumulado = 0
 	var plantasCosechadas = []
 	
+	
+	
 	const property posicionesVisitadas = #{}
 		
 	method agregarPlantaCosechada(planta)
@@ -16,6 +19,10 @@ object toni {
 		plantasCosechadas.add(planta)
 	}
 	
+	method entregarCosecha()
+	{
+		return plantasCosechadas
+	}
 	
 	
 	method agregarOroPorVenta(cantidad)
@@ -135,6 +142,26 @@ object toni {
 	{
 		 self.position(p)
 		 posicionesVisitadas.add(p)
+	}
+	
+	method hacerOfrenda()
+	{
+		if(!plantasSembradas.isEmpty())
+		{
+			var plantaAzar = plantasSembradas.first()
+			game.removeVisual(plantaAzar)
+			plantasSembradas.remove(plantaAzar)
+			
+		}
+		
+		if(!pachamama.estaAgradecida())
+			pachamama.setNivel(10)
+		else
+			{
+				pachamama.llover()
+				self.regarLasPlantas()
+			}	
+		
 	}
 	
 	

@@ -2,8 +2,16 @@ import wollok.game.*
 import toni.*
 import plantas.*
 import pachamama.*
+import mercados.*
 
 program huertaDeToni {
+	
+	var mercado1 = new Mercado(monedas = 1000)
+	
+	
+	var mercado2 = new Mercado(monedas = 2000)
+
+	
 	game.width(15)
 	game.height(15)
 	
@@ -19,6 +27,10 @@ program huertaDeToni {
 	 */
 	game.addVisualIn(pachamama, game.at(0, 13));
 	
+	game.addVisualIn(mercado1, game.at(2, 10));
+	
+	game.addVisualIn(mercado2, game.at(4, 8));
+	
 	/* 
 	 * Agregamos una fila de maices. Ojo al regar, que Toni no va a conocer
 	 * estas plantas.
@@ -31,6 +43,9 @@ program huertaDeToni {
 	 */
 	//(1..13).forEach { x => game.addVisualIn(new Maiz(), game.at(x, 5)) }
 	
+	game.whenCollideDo(pachamama, { t => t.hacerOfrenda() })
+
+							   
 	keyboard.right().onPressDo{ toni.moverDerecha() }
 	keyboard.left().onPressDo{ toni.moverIzquierda() } 
 	keyboard.up().onPressDo{ toni.moverArriba() }
@@ -110,8 +125,26 @@ program huertaDeToni {
 	
 	
 	keyboard.v().onPressDo{
-		toni.venderCosecha()
-	
+				
+		
+	try {
+      var mercado = game.colliders(toni).first()
+		
+		if(game.colliders(toni).size()==0)
+			throw new Exception(message = "No hay mercado para vender en esta posicion")
+		else		
+		{
+			if(mercado.getMonedas() >= toni.cuantoOroSumaSiVendoCosecha())
+			{
+				mercado.mercaderia(toni.entregarCosecha())
+				toni.venderCosecha()
+			}
+		}
+    }
+    catch e : Exception {
+        	throw new Exception(message = "No hay mercado para vender en esta posicion")
+    }
+    
 	}
 	
 	keyboard.space().onPressDo{
@@ -122,6 +155,15 @@ program huertaDeToni {
 	 
 	}
 	
-		
+	keyboard.f().onPressDo{
+		pachamama.fumigar()	
+	}
+	
+	keyboard.l().onPressDo{
+		pachamama.llover()	
+	}
+	
+	//game.whenCollideDo(pachamama, { t => t.hacerOfrenda() })
+			
 	game.start()
 }

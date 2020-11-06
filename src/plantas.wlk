@@ -1,6 +1,9 @@
 import wollok.game.*
+import pachamama.*
 
 class Planta {
+	
+	var pacha = pachamama
 	
 	var property aptaCosecha = false
 	var property position 
@@ -44,7 +47,11 @@ class Maiz inherits Planta {
 	
 	override method precioDeVenta()
 	{
-		return 150
+//		if(pacha.estaAgradecida())
+//			return 180
+//		else
+//			return 150
+	return if (pacha.estaAgradecida()) {180} else {150}
 	}
 	
 	method libreDeGluten()
@@ -68,25 +75,32 @@ class Trigo inherits Planta {
 	{
 		if(etapaEvolucion == 0)
 		{
-			etapaEvolucion = 1
+			if(pacha.estaAgradecida())
+				etapaEvolucion = 2
+			else
+				etapaEvolucion = 1
+				
 			imagen = "trigo_1.png"
 		}
 		else if (etapaEvolucion == 1)
 		{
-			etapaEvolucion = 2
+			if(pacha.estaAgradecida())
+				etapaEvolucion = 3
+			else
+				etapaEvolucion = 2
+			
 			imagen = "trigo_2.png"
 		}
 		else if (etapaEvolucion == 2)
 		{
-			etapaEvolucion = 3
+			if(pacha.estaAgradecida())
+				etapaEvolucion = 3
+			else
+				etapaEvolucion = 3
+			
 			imagen = "trigo_3.png"
 			aptaCosecha = true
-		}
-	//	else
-	//	{
-	//		etapaEvolucion = 0
-	//		imagen = "trigo_0.png"
-	//	}
+		}	
 	}
 	
 	override method precioDeVenta()
@@ -115,8 +129,8 @@ class Tomaco inherits Planta {
 	
 	override method image() 
 	{	
-		
-		return "tomaco_ok.png"		
+		return if (pacha.estaAgradecida()) {"tomaco_ok.png"} else {"tomaco_podrido.png"}
+		//return "tomaco_ok.png"		
 	}
 	
 	override method precioDeVenta()
